@@ -1,6 +1,6 @@
 # Skout 🃏
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0-or-later)
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Framework: PySide6](https://img.shields.io/badge/Framework-PySide6-green.svg)](https://www.qt.io/qt-for-python)
 
@@ -70,7 +70,7 @@ Contributions are welcome! Whether it's reporting a bug, improving the AI logic,
 
 ## ⚖️ License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GPL-3.0-or-later License. See `LICENSE` for more information.
 
 ---
 *Disclaimer: Skout is an open-source fan project and is not affiliated with the original board game publishers.*

@@ -1,7 +1,10 @@
-# SPDX-FileCopyrightText: 2026 hthienloc
-# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Loc Huynh <huynhloc.contact@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import os
+from PySide6.QtGui import QPalette, QColor
+from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QSettings
 
 class Assets:
     _UI_DIR = os.path.dirname(__file__)
@@ -21,11 +24,30 @@ class Assets:
         "Resume": "media-playback-start",
         "Rules": "help-contents",
         "Quit": "application-exit",
-        "Lobby": "go-home"
+        "Lobby": "go-home",
+        "Settings": "configure"
     }
 
-from PySide6.QtGui import QPalette, QColor
-from PySide6.QtWidgets import QApplication
+class SettingsManager:
+    """Handles persistence of user preferences using QSettings (skoutrc)."""
+    def __init__(self):
+        self.settings = QSettings("KDE", "Skout")
+
+    @property
+    def bot_delay(self) -> int:
+        return int(self.settings.value("game/bot_delay", 1500))
+    
+    @bot_delay.setter
+    def bot_delay(self, value: int):
+        self.settings.setValue("game/bot_delay", value)
+
+    @property
+    def player_name(self) -> str:
+        return self.settings.value("game/player_name", "You")
+    
+    @player_name.setter
+    def player_name(self, value: str):
+        self.settings.setValue("game/player_name", value)
 
 class Theme:
     @staticmethod
@@ -39,9 +61,7 @@ class Theme:
     @property
     def BG_MAIN(self): return self.get_color(QPalette.Window)
     @property
-    def BG_TABLE(self): 
-        # Deep red/table green or system shadow
-        return self.get_color(QPalette.Base)
+    def BG_TABLE(self): return self.get_color(QPalette.Base)
     @property
     def BG_GLASS(self): return "rgba(255, 255, 255, 0.1)"
     @property
@@ -49,7 +69,6 @@ class Theme:
     @property
     def BG_HIGHLIGHT(self): return self.get_color(QPalette.Highlight)
     
-    # Text
     @property
     def TEXT_PRIMARY(self): return self.get_color(QPalette.WindowText)
     @property
@@ -58,7 +77,7 @@ class Theme:
         col.setAlpha(180)
         return f"rgba({col.red()}, {col.green()}, {col.blue()}, 180)"
     @property
-    def TEXT_GOLD(self): return "#f1c40f" # Characteristic gold for Skout
+    def TEXT_GOLD(self): return "#f1c40f"
     @property
     def TEXT_DISABLED(self): 
         col = QApplication.palette().color(QPalette.WindowText)
@@ -78,8 +97,6 @@ class Theme:
     def COLOR_FLIP(self): return "#e67e22"
     @property
     def COLOR_CONFIRM(self): return "#2ecc71"
-    @property
-    def COLOR_DISABLED(self): return "rgba(0,0,0,0.1)"
     
     # Card Aesthetics
     @property
@@ -89,9 +106,7 @@ class Theme:
     @property
     def CARD_TEXT(self): return self.get_color(QPalette.Text)
     @property
-    def CARD_BORDER(self): 
-        col = QApplication.palette().color(QPalette.Mid)
-        return col.name()
+    def CARD_BORDER(self): return QApplication.palette().color(QPalette.Mid).name()
     @property
     def CARD_HIGHLIGHT(self): return self.get_color(QPalette.Highlight)
     @property
@@ -106,7 +121,7 @@ class Theme:
         col = QApplication.palette().color(QPalette.Highlight)
         return f"rgba({col.red()}, {col.green()}, {col.blue()}, 0.5)"
     
-    # Static values can stay as class attributes
+    # Constants
     WINDOW_WIDTH = 1280
     WINDOW_HEIGHT = 850
     CARD_WIDTH = 75
@@ -135,5 +150,6 @@ class Theme:
     def get_font_family(self):
         return self.FONT_FAMILY
 
-# Global Theme Instance
+# Global Instances
 Theme = Theme()
+Settings = SettingsManager()

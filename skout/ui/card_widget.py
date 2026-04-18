@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2026 hthienloc
-# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Loc Huynh <huynhloc.contact@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QFrame, QPushButton, QGraphicsDropShadowEffect
 from PySide6.QtCore import Qt, Signal, QPropertyAnimation, QPoint

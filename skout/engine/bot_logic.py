@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2026 hthienloc
-# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Loc Huynh <huynhloc.contact@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from typing import List, Optional, Set
 from enum import Enum
@@ -267,6 +267,7 @@ class SkoutBot:
 
         # ADAPTIVE PHASE DETECTION
         is_endgame = any(len(p.hand) <= 3 for p in engine.players)
+        is_early_game = engine.turn_count < len(engine.players) * 1.5
         is_blitz = hand_len <= 4
 
         if self.difficulty == BotDifficulty.EASY:
@@ -286,6 +287,11 @@ class SkoutBot:
                 w_delta *= 2.0 
                 w_skout_cost *= 2.5 
                 adaptive_reason = "ADAPT: Blitz Closer"
+            elif is_early_game:
+                # Prioritize shedding over capturing big sets
+                w_delta *= 0.5
+                w_trash_bonus *= 2.5
+                adaptive_reason = "ADAPT: Hand Thinning (Early)"
             elif is_endgame:
                 w_capture += 4.0
                 w_pressure *= 1.5
@@ -336,6 +342,11 @@ class SkoutBot:
             # Hand reduction priority
             score += len(show["indices"]) * 12.0
             
+            # POWER HOARDING: Penalize using very strong sets in early game
+            if is_early_game and show["power"] > 2000 and not is_round_end_threat:
+                # If we use a 3-set or 4-run early, penalize unless it's to survive
+                score -= (show["power"] / 50.0) 
+
             # Pressure scaling
             score += pressure_bonus * (show["power"] / 800.0)
             

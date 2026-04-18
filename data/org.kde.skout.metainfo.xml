@@ -3,11 +3,11 @@
   <id>org.kde.skout</id>
   <name>Skout</name>
   <summary>An open-source clone of the board game Skout</summary>
-  <developer id="io.github.hthienloc">
-    <name>hthienloc</name>
+  <developer id="io.github.Loc Huynh <huynhloc.contact@gmail.com>">
+    <name>Loc Huynh <huynhloc.contact@gmail.com></name>
   </developer>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
+  <project_license>GPL-3.0-or-later</project_license>
   <content_rating type="oars-1.1" />
   <categories>
     <category>Game</category>
@@ -30,11 +30,11 @@
     </ul>
   </description>
   <launchable type="desktop-id">org.kde.skout.desktop</launchable>
-  <url type="homepage">https://github.com/hthienloc/skout</url>
+  <url type="homepage">https://github.com/Loc Huynh <huynhloc.contact@gmail.com>/skout</url>
   <screenshots>
     <screenshot type="default">
       <caption>Main game arena</caption>
-      <image>https://raw.githubusercontent.com/hthienloc/skout/main/assets/screenshots/arena.png</image>
+      <image>https://raw.githubusercontent.com/Loc Huynh <huynhloc.contact@gmail.com>/skout/main/assets/screenshots/arena.png</image>
     </screenshot>
   </screenshots>
   <provides>
