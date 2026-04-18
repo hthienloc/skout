@@ -1,0 +1,26 @@
+[project]
+name = "skout"
+version = "0.1.0"
+description = "An open-source clone of the board game Skout built with PySide6"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "hthienloc"},
+]
+dependencies = [
+    "PySide6>=6.7.0",
+    "qasync>=0.27.1",
+    "pydantic>=2.0.0",
+    "pytest-qt>=4.4.0",
+]
+
+[project.scripts]
+skout = "skout.main:main"
+
+[tool.setuptools]
+packages = ["skout"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

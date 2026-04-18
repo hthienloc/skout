@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.kde.skout</id>
+  <name>Skout</name>
+  <summary>An open-source clone of the board game Skout</summary>
+  <developer id="io.github.hthienloc">
+    <name>hthienloc</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <content_rating type="oars-1.1" />
+  <categories>
+    <category>Game</category>
+    <category>CardGame</category>
+    <category>Qt</category>
+    <category>KDE</category>
+  </categories>
+  <description>
+    <p>
+      Skout is a digital implementation of the popular circus-themed card game. 
+      In this game, you are a circus leader trying to put together the best show 
+      by recruiting members from other circuses while managing your own troupe.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Fast-paced card game strategy with complex decision-making</li>
+      <li>Clean, modern Qt-based interface following KDE design principles</li>
+      <li>Intelligent AI opponents with adaptive difficulty</li>
+      <li>Open-source and fully customizable</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">org.kde.skout.desktop</launchable>
+  <url type="homepage">https://github.com/hthienloc/skout</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main game arena</caption>
+      <image>https://raw.githubusercontent.com/hthienloc/skout/main/assets/screenshots/arena.png</image>
+    </screenshot>
+  </screenshots>
+  <provides>
+    <binary>skout</binary>
+  </provides>
+</component>

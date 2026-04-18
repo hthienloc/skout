@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Skout
+GenericName=Card Game
+Comment=An open-source clone of the board game Skout
+Exec=skout
+Icon=org.kde.skout
+Terminal=false
+Type=Application
+Categories=Game;CardGame;Qt;
+Keywords=card;game;skout;circus;
+X-KDE-StartupNotify=true
